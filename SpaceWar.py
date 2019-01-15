@@ -16,7 +16,7 @@ class SpaceObject(object):
 
     def __init__(self,x=None, y=None,direction=None,speed=None, rspeed=None):
         
-        self.image = pyglet.image.load('meteors.png')
+        self.image = pyglet.image.load('meteorBrown_big1.png')
         self.image.anchor_x = self.image.width // 2
         self.image.anchor_y = self.image.height // 2
         self.sprite = pyglet.sprite.Sprite(self.image, batch=batch)
@@ -57,7 +57,7 @@ class Raketa(object):
 
     def __init__(self):
         #načtu obrázek lodě
-        self.obrazek = pyglet.image.load("blue.png")
+        self.obrazek = pyglet.image.load("playerShip1_blue.png")
         #střed otáčení dáme do prostřed tohoto obrázku
         self.obrazek.anchor_x = self.obrazek.width // 2
         self.obrazek.anchor_y = self.obrazek.height // 2
