@@ -20,8 +20,8 @@ class SpaceObject(object):
         self.image.anchor_x = self.image.width // 2
         self.image.anchor_y = self.image.height // 2
         self.sprite = pyglet.sprite.Sprite(self.image, batch=batch)
-        self._x = x if x is not None else random.randint(600, window.width)
-        self._y = y if y is not None else random.randint(600, window.height)
+        self._x = x if x is not None else random.randint(500, window.width)
+        self._y = y if y is not None else random.randint(500, window.height)
         self.x = self._x
         self.y = self._y
         self.direction = direction if direction is not None else random.randint(0, 359)
