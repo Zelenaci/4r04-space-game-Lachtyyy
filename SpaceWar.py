@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jan 14 20:00:12 2019
-
+Created on Tue Jan 15 11:17:12 2019
 @author: lachtyyy
 """
 
@@ -13,13 +12,11 @@ from pyglet.window.key import DOWN, UP, LEFT, RIGHT
 window = pyglet.window.Window(1000, 800)
 batch = pyglet.graphics.Batch()   # pro optimalizované vyreslování objektů
 
-
 class SpaceObject(object):
 
     def __init__(self,x=None, y=None,direction=None,speed=None, rspeed=None):
         
-        num = random.choice(range(0, ))
-        self.image = pyglet.image.load('meteors/{}.png'.format(num))
+        self.image = pyglet.image.load('meteors.png')
         self.image.anchor_x = self.image.width // 2
         self.image.anchor_y = self.image.height // 2
         self.sprite = pyglet.sprite.Sprite(self.image, batch=batch)
@@ -60,7 +57,7 @@ class Raketa(object):
 
     def __init__(self):
         #načtu obrázek lodě
-        self.obrazek = pyglet.image.load("playerShip1_red.png")
+        self.obrazek = pyglet.image.load("blue.png")
         #střed otáčení dáme do prostřed tohoto obrázku
         self.obrazek.anchor_x = self.obrazek.width // 2
         self.obrazek.anchor_y = self.obrazek.height // 2
@@ -76,7 +73,7 @@ class Raketa(object):
     def tick(self, dt):
         global keyboard
         self.okraj()
-        for data in klavesy:
+        for data in keyboards:
             if data == LEFT:
                 self.sprite.rotation -= 5
             if data == RIGHT:
@@ -103,10 +100,10 @@ class Raketa(object):
         if self.y - rozmer < -60:
             self.sprite.y=window.height+20
 
-klavesy=set()        
+keyboards=set()        
 for o in range(1):
     lod=Raketa()
-    pyglet.clock.schedule_interval(lod.tiktak, 1/ 60 )
+    pyglet.clock.schedule_interval(lod.tick, 1/ 60 )
 
 for x in range(15):
     kamen=SpaceObject()
@@ -118,13 +115,13 @@ for x in range(15):
 
 @window.event
 def on_key_press(data, mod):
-    global klavesy
-    klavesy.add(data)
+    global keyboards
+    keyboards.add(data)
     
 @window.event
 def on_key_release(data, mod):
-    global klavesy
-    klavesy.remove(data)
+    global keyboards
+    keyboards.remove(data)
 
 @window.event
 def on_draw():
@@ -133,4 +130,4 @@ def on_draw():
  
     
     
-pyglet.app.run()      
+pyglet.app.run() 
